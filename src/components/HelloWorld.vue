@@ -80,16 +80,26 @@
         </a>
       </li>
     </ul>
+    <button v-on:click="logout">Logout</button>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase';
+
 export default {
   name: 'HelloWorld',
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
     };
+  },
+  methods: {
+    logout: function() {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('login')
+      })
+    }
   },
 };
 </script>
