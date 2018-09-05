@@ -4,7 +4,7 @@ import Vue from 'vue';
 import firebase from 'firebase';
 import App from './App';
 import router from './router';
-import json from './firebaseConfig.json'
+import json from './firebaseConfig.json';
 
 Vue.config.productionTip = false;
 
@@ -27,3 +27,14 @@ firebase.auth().onAuthStateChanged(function(user) {
     });
   }
 });
+
+/* eslint-disable no-new */
+/* Medium's main.js when you're not using Firebase. 
+  Let's see how they initiate. Maybe remove the old firebase setup, comment for future reference?
+new Vue ({
+  el: '#app',
+  router,
+  template: '<App/>',
+  components: { App },
+});
+*/

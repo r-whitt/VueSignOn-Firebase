@@ -6,15 +6,41 @@ import HelloWorld from '@/components/HelloWorld';
 import Login from '@/components/Login';
 import SignUp from '@/components/SignUp';
 
+import Auth from '@/views/Auth';
+import Dashboard from '@/views/Dashboard';
+import Home from '@/views/Home';
+
 Vue.use(Router);
 
 // let is correct as route will change depending on sigin
 // eslint-disable-next-line
 let router = new Router({
+  mode: 'history',
   routes: [
     {
+      path: '/home',
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/auth',
+      name: 'auth',
+      component: Auth,
+      meta: {
+        guestOnly: true,
+      },
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
       path: '*',
-      redirect: '/login',
+      redirect: '/home',
     },
     {
       path: '/',
